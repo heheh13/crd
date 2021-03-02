@@ -117,7 +117,7 @@ func main() {
 			Name: "destroyment",
 		},
 		Spec: v1.DestroymentSpec{
-			Replicas: 2,
+			Replicas: intptr(2),
 			Container: v1.ContainerSpec{
 				Image: "nginx",
 				Port:  8080,
@@ -149,4 +149,7 @@ func main() {
 	signal.Notify(ch, os.Interrupt)
 	<-ch
 
+}
+func intptr(i int32) *int32 {
+	return &i
 }
